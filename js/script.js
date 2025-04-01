@@ -5,6 +5,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-links li');
     const body = document.querySelector('body');
 
+    const observerOptions = {
+        threshold: 0.25
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card, section h2, .skill-badge').forEach(el => {
+        el.classList.add('animate-element');
+        observer.observe(el);
+    });
+
+     // Add click ripple effect to buttons
+     document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const x = e.clientX - e.target.getBoundingClientRect().left;
+            const y = e.clientY - e.target.getBoundingClientRect().top;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+    
     if (burger) {
         burger.addEventListener('click', () => {
             // Toggle Nav

@@ -11,7 +11,11 @@
     --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     --nav-height: 70px;
     --transition: all 0.3s ease;
+
+    --font-primary: 'Space Grotesk', sans-serif;
+    --font-heading: 'Syne', sans-serif;
   }
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
   
   /* Global Styles */
   * {
@@ -26,8 +30,13 @@
     color: var(--text-primary);
     background-color: var(--bg-primary);
     transition: var(--transition);
+    font-family: var(--font-primary);
   }
   
+  h1, h2, h3, h4, h5, h6, .logo {
+    font-family: var(--font-heading);
+  }
+
   a {
     text-decoration: none;
     color: var(--accent-color);
@@ -50,9 +59,10 @@
   
   /* Navigation */
   header {
-    background-color: rgba(18, 18, 18, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(204, 255, 0, 0.1);
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -69,6 +79,22 @@
     margin: 0 auto;
   }
   
+  .fade-in {
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  
+/* Staggered animation for projects */
+.projects-container .project-card:nth-child(1) { animation-delay: 0.1s; }
+.projects-container .project-card:nth-child(2) { animation-delay: 0.3s; }
+.projects-container .project-card:nth-child(3) { animation-delay: 0.5s; }
+
   .logo {
     font-size: 1.6rem;
     font-weight: 700;
@@ -203,6 +229,25 @@
     overflow: hidden;
     z-index: 1;
   }
+
+  .btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  .btn:active::after {
+    width: 300px;
+    height: 300px;
+  }
+
   
   .primary-btn {
     background-image: var(--gradient-bg);
@@ -283,7 +328,11 @@
   }
   
   .project-card {
-    background-color: var(--bg-card);
+    background-color: rgba(37, 37, 37, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(204, 255, 0, 0.1);
+
     border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--card-shadow);
@@ -610,3 +659,188 @@
     background-image: var(--gradient-bg);
     border-radius: 0 0 16px 16px;
   }
+
+
+  /* Contact Page Styles */
+.contact-section {
+  padding: 6rem 1rem;
+}
+
+.contact-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.contact-method {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.contact-method i {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  margin-right: 1rem;
+  background: rgba(204, 255, 0, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(204, 255, 0, 0.2);
+}
+
+.contact-method h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.contact-form {
+  background-color: var(--bg-card);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  border-left: 4px solid var(--accent-color);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.form-group input, 
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(204, 255, 0, 0.2);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(204, 255, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+  .contact-container {
+      grid-template-columns: 1fr;
+  }
+}
+
+/* Blog Section Styles */
+.blog-section {
+  padding: 6rem 1rem;
+  background-color: var(--bg-secondary);
+}
+
+.blog-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.blog-card {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.blog-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.blog-image {
+  height: 200px;
+  background-color: #2a2a2a;
+  position: relative;
+}
+
+.blog-content {
+  padding: 1.5rem;
+}
+
+.blog-date {
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.blog-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.blog-card p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.read-more i {
+  margin-left: 0.5rem;
+  transition: transform 0.3s;
+}
+
+.read-more:hover i {
+  transform: translateX(5px);
+}
+
+.center-btn {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* Ripple Effect for Buttons */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+      transform: scale(4);
+      opacity: 0;
+  }
+}
