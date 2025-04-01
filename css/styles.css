@@ -844,3 +844,40 @@
       opacity: 0;
   }
 }
+
+
+/* Hero Photo Styling */
+.hero-photo-container {
+  margin-bottom: 2rem;
+}
+
+.hero-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 4px solid var(--accent-color);
+  box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
+  margin-bottom: 1.5rem;
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .hero-photo {
+      width: 150px;
+      height: 150px;
+  }
+}
