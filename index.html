@@ -3,152 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omindu Abeywardane - Portfolio</title>
+    <title>Jenny - Product Designer</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --accent-color: #FF8A50;
+            --text-color: #1A1A1A;
+            --bg-color: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: transparent;
+            position: relative;
+            box-shadow: none;
+            backdrop-filter: none;
+            border-bottom: none;
+        }
+        
+        nav {
+            background-color: #1A1A1A;
+            border-radius: 50px;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 1080px;
+            height: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0;
+        }
+        
+        .nav-links a {
+            color: white;
+            padding: 20px 30px;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover::after {
+            display: none;
+        }
+        
+        .nav-links a.active {
+            background-color: var(--accent-color);
+            border-radius: 50px;
+            color: white;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+        }
+        
+        .logo-circle {
+            background-color: var(--accent-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .hero {
+            min-height: auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+            background: var(--bg-color);
+            position: relative;
+            overflow: visible;
+        }
+        
+        .hero::before {
+            display: none;
+        }
+        
+        .greeting {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            padding: 10px 25px;
+            display: inline-block;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .greeting::after {
+            content: "";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF8A50'%3E%3Cpath d='M12 0l2.5 9h9.5l-7.5 5.5 2.5 9-7-5-7 5 2.5-9-7.5-5.5h9.5z'/%3E%3C/svg%3E");
+            background-size: contain;
+        }
+        
+        .hero-container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hero-content {
+            max-width: 500px;
+            text-align: left;
+        }
+        
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+        
+        .hero-name {
+            color: var(--accent-color);
+        }
+        
+        .hero h2 {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+        }
+        
+        .testimonial {
+            max-width: 300px;
+            font-style: italic;
+            color: #555;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .recommended {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .hero-photo-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+        
+        .circle-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(255, 138, 80, 0.3);
+            z-index: 1;
+        }
+        
+        .hero-photo {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            max-height: 100%;
+            width: auto;
+            border: none;
+            box-shadow: none;
+            animation: none;
+            border-radius: 0;
+        }
+        
+        .experience {
+            position: absolute;
+            top: 80px;
+            right: 50px;
+            text-align: right;
+            color: var(--text-color);
+        }
+        
+        .stars {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+        
+        .years {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .years-text {
+            margin: 0;
+        }
+        
+        .cta-buttons {
+            margin-top: 40px;
+        }
+        
+        .primary-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .primary-btn i {
+            margin-left: 10px;
+        }
+        
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--text-color);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+        
+        .deco-element {
+            position: absolute;
+            left: 240px;
+            top: 350px;
+            width: 100px;
+            height: 100px;
+            opacity: 0.7;
+            z-index: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">Omindu Abeywardane hehe</div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
+                <li><a href="#">Service</a></li>
+                
+                <div class="logo">
+                    <div class="logo-circle">JC</div>
+                    <div style="color: white; font-weight: bold;">JCREA</div>
+                </div>
+                
+                <li><a href="#">Resume</a></li>
+                <li><a href="projects.html">Project</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
         </nav>
     </header>
 
     <main>
-
-
         <section class="hero">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1>Hello, I'm <span class="highlight">Omindu Abeywardane</span></h1>
-                    <h2>Software Developer & Designer</h2>
-                    <p>I create elegant solutions through code and design</p>
+                    <div class="greeting">Hello!</div>
+                    <h1>I'm <span class="hero-name">Jenny</span>,<br>Product Designer</h1>
+                    
+                    <div class="testimonial">
+                        Jenny's Exceptional product design ensure our website's success.
+                        <div class="recommended">Highly Recommended</div>
+                    </div>
+                    
                     <div class="cta-buttons">
-                        <a href="projects.html" class="btn primary-btn">View My Work</a>
-                        <a href="contact.html" class="btn secondary-btn">Contact Me</a>
+                        <a href="#" class="btn primary-btn">Portfolio <i class="fas fa-arrow-up-right"></i></a>
+                        <a href="#" class="btn secondary-btn">Hire me</a>
                     </div>
                 </div>
+                
                 <div class="hero-photo-container">
-                    <img src="images/DPimg.png" alt="Omindu Abeywardane" class="hero-photo">
+                    <div class="circle-bg"></div>
+                    <img src="images/DPimg.png" alt="Jenny" class="hero-photo">
                 </div>
-            </div>
-        </section>
-
-        <section class="featured-projects">
-            <h2>Featured Projects</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <div class="project-image"></div>
-                    <h3>Project One</h3>
-                    <p>A brief description of this amazing project and the technologies used.</p>
-                    <a href="#" class="btn small-btn">View Project</a>
+                
+                <div class="experience">
+                    <div class="stars">★★★★★</div>
+                    <div class="years">10 Years</div>
+                    <div class="years-text">Experince</div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image"></div>
-                    <h3>Project Two</h3>
-                    <p>A brief description of this amazing project and the technologies used.</p>
-                    <a href="#" class="btn small-btn">View Project</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-image"></div>
-                    <h3>Project Three</h3>
-                    <p>A brief description of this amazing project and the technologies used.</p>
-                    <a href="#" class="btn small-btn">View Project</a>
-                </div>
+                
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M20 80C50 60 80 80 80 20' stroke='%23FF8A50' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" alt="" class="deco-element">
             </div>
         </section>
     </main>
-
-
-    <section class="youtube-section">
-        <div class="container">
-            <h2>My YouTube Channel</h2>
-            <div class="youtube-container">
-                <div class="video-wrapper">
-            <!-- Replace the existing iframe with this corrected one -->
-            <iframe 
-                src="https://www.youtube.com/embed/QgRiW_VQ7E4" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-                </div>
-                <div class="channel-info">
-                    <h3>Check Out My Channel</h3>
-                    <p>This is where I share insights about technology, programming tutorials, and my journey as a developer.</p>
-                    <p>Subscribe to stay updated with my latest videos and projects!</p>
-                    <!-- Replace the existing subscription link with this corrected one -->
-                    <a href="https://www.youtube.com/channel/UCETWMMukTEntcmD5rsvmGNQ" class="btn primary-btn" target="_blank">
-                        <i class="fab fa-youtube"></i> Subscribe
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Add this section before the footer -->
-<section class="blog-section">
-    <div class="container">
-        <h2>Recent Blog Posts</h2>
-        <div class="blog-posts">
-            <div class="blog-card fade-in">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <div class="blog-date">June 15, 2023</div>
-                    <h3>Design Principles for Modern UI</h3>
-                    <p>Exploring the fundamental principles that make UI design effective and appealing.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="blog-card fade-in">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <div class="blog-date">May 22, 2023</div>
-                    <h3>Creating Effective User Flows</h3>
-                    <p>How to design user flows that enhance the overall user experience of your applications.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-            
-            <div class="blog-card fade-in">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <div class="blog-date">April 10, 2023</div>
-                    <h3>Color Psychology in UI Design</h3>
-                    <p>Understanding how colors affect user perception and behavior in digital interfaces.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="center-btn">
-            <a href="#" class="btn secondary-btn">View All Posts</a>
-        </div>
-    </div>
-</section>
-
-    
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com/omindu-abey"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-        </div>
-        <p>&copy; 2023 Omindu Abeywardane. All rights reserved.</p>
-    </footer>
 
     <script src="js/script.js"></script>
 </body>
