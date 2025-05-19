@@ -3,310 +3,968 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jenny - Product Designer</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Jenny | Product Designer</title>
     <style>
-        :root {
-            --accent-color: #FF8A50;
-            --text-color: #1A1A1A;
-            --bg-color: #FFFFFF;
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
+            background-color: #f8f8f8;
+            color: #222;
+            overflow-x: hidden;
         }
         
-        header {
-            background-color: transparent;
-            position: relative;
-            box-shadow: none;
-            backdrop-filter: none;
-            border-bottom: none;
-        }
-        
+        /* Navigation */
         nav {
-            background-color: #1A1A1A;
-            border-radius: 50px;
-            padding: 0;
-            margin: 20px auto;
-            max-width: 1080px;
-            height: auto;
-        }
-        
-        .nav-links {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .nav-links li {
-            margin: 0;
-        }
-        
-        .nav-links a {
-            color: white;
-            padding: 20px 30px;
-            font-weight: 500;
-        }
-        
-        .nav-links a:hover::after {
-            display: none;
-        }
-        
-        .nav-links a.active {
-            background-color: var(--accent-color);
-            border-radius: 50px;
-            color: white;
+            padding: 1rem 2rem;
+            background-color: #121212;
+            border-radius: 60px;
+            margin: 1rem 2rem;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            margin: 0 20px;
+            gap: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
         }
         
         .logo-circle {
-            background-color: var(--accent-color);
-            width: 36px;
-            height: 36px;
+            background-color: #FF7E33;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
-            font-size: 18px;
         }
         
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FF7E33;
+        }
+        
+        .nav-links .active {
+            background-color: #FF7E33;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+        }
+        
+        /* Hero Section */
         .hero {
-            min-height: auto;
             display: flex;
-            justify-content: space-between;
-            padding: 50px;
-            background: var(--bg-color);
+            min-height: 90vh;
             position: relative;
-            overflow: visible;
-        }
-        
-        .hero::before {
-            display: none;
-        }
-        
-        .greeting {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            padding: 10px 25px;
-            display: inline-block;
-            position: relative;
-            margin-bottom: 20px;
-        }
-        
-        .greeting::after {
-            content: "";
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 30px;
-            height: 30px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF8A50'%3E%3Cpath d='M12 0l2.5 9h9.5l-7.5 5.5 2.5 9-7-5-7 5 2.5-9-7.5-5.5h9.5z'/%3E%3C/svg%3E");
-            background-size: contain;
-        }
-        
-        .hero-container {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+            overflow: hidden;
         }
         
         .hero-content {
-            max-width: 500px;
-            text-align: left;
+            flex: 1;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hello-bubble {
+            background-color: white;
+            border: 2px solid #000;
+            border-radius: 20px;
+            padding: 0.5rem 1.5rem;
+            width: fit-content;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .hello-bubble::after {
+            content: "✨";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 1.5rem;
         }
         
         .hero h1 {
-            font-size: 5rem;
+            font-size: 4.5rem;
             line-height: 1.1;
-            color: var(--text-color);
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
         }
         
-        .hero-name {
-            color: var(--accent-color);
-        }
-        
-        .hero h2 {
-            font-size: 1.6rem;
-            margin-bottom: 30px;
+        .hero h1 span {
+            color: #FF7E33;
         }
         
         .testimonial {
-            max-width: 300px;
-            font-style: italic;
-            color: #555;
+            max-width: 350px;
+            margin-top: 2rem;
             position: relative;
-            margin-bottom: 40px;
         }
         
-        .recommended {
-            font-weight: bold;
-            margin-top: 10px;
+        .testimonial::before {
+            content: "❝";
+            font-size: 2rem;
+            color: #444;
+            position: absolute;
+            left: -20px;
+            top: -10px;
         }
         
-        .hero-photo-container {
+        .deco-squiggle {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 100px;
+            opacity: 0.6;
+        }
+        
+        .hero-image {
+            flex: 1;
             position: relative;
-            width: 500px;
-            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .circle-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            background-color: #FF7E33;
+            width: 700px;
+            height: 700px;
             border-radius: 50%;
-            background-color: rgba(255, 138, 80, 0.3);
-            z-index: 1;
+            opacity: 0.3;
+            position: absolute;
         }
         
-        .hero-photo {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+        .person-img {
+            position: relative;
             z-index: 2;
-            max-height: 100%;
-            width: auto;
-            border: none;
-            box-shadow: none;
-            animation: none;
-            border-radius: 0;
+            max-height: 80vh;
+            object-fit: contain;
         }
         
         .experience {
             position: absolute;
-            top: 80px;
             right: 50px;
-            text-align: right;
-            color: var(--text-color);
+            top: 30%;
+            text-align: center;
         }
         
         .stars {
-            color: var(--accent-color);
+            color: #FF7E33;
             font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
         
         .years {
             font-size: 3rem;
             font-weight: bold;
-            margin: 0;
         }
         
-        .years-text {
-            margin: 0;
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
         }
         
-        .cta-buttons {
-            margin-top: 40px;
-        }
-        
-        .primary-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: bold;
-            display: inline-flex;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .btn-primary {
+            background-color: #FF7E33;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255, 126, 51, 0.1);
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 6rem 4rem;
+            background-color: #121212;
+            color: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 4rem;
             align-items: center;
         }
         
-        .primary-btn i {
-            margin-left: 10px;
+        .about-text {
+            flex: 1;
         }
         
-        .secondary-btn {
-            background-color: transparent;
-            color: var(--text-color);
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills {
+            flex: 1;
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background-color: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: #FF7E33;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 4rem;
+            background-color: #f8f8f8;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            background-color: rgba(255, 126, 51, 0.1);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #FF7E33;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 6rem 4rem;
+            background-color: #f1f1f1;
+        }
+        
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            background: none;
             border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
             font-weight: bold;
+            border-radius: 20px;
+            transition: all 0.3s;
         }
         
-        .deco-element {
+        .filter-btn.active {
+            background-color: #FF7E33;
+            color: white;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            background-color: #ddd;
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-overlay {
             position: absolute;
-            left: 240px;
-            top: 350px;
-            width: 100px;
-            height: 100px;
-            opacity: 0.7;
-            z-index: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1.5rem;
+            color: white;
+            transform: translateY(100px);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 4rem;
+            background-color: #121212;
+            color: white;
+        }
+        
+        .testimonials-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-card {
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .testimonial-card p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .client {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .client-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .client-info span {
+            color: #999;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 6rem 4rem;
+            background-color: #f8f8f8;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-icon {
+            background-color: rgba(255, 126, 51, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FF7E33;
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            background-color: #FF7E33;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            background-color: #FF7E33;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .hero-content, .hero-image {
+                padding: 2rem;
+            }
+            
+            .experience {
+                position: static;
+                margin-top: 2rem;
+            }
+            
+            .about-content, .contact-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .services, .projects, .testimonials, .contact, .about {
+                padding: 3rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="#">Service</a></li>
-                
-                <div class="logo">
-                    <div class="logo-circle">JC</div>
-                    <div style="color: white; font-weight: bold;">JCREA</div>
-                </div>
-                
-                <li><a href="#">Resume</a></li>
-                <li><a href="projects.html">Project</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="greeting">Hello!</div>
-                    <h1>I'm <span class="hero-name">Jenny</span>,<br>Product Designer</h1>
-                    
-                    <div class="testimonial">
-                        Jenny's Exceptional product design ensure our website's success.
-                        <div class="recommended">Highly Recommended</div>
-                    </div>
-                    
-                    <div class="cta-buttons">
-                        <a href="#" class="btn primary-btn">Portfolio <i class="fas fa-arrow-up-right"></i></a>
-                        <a href="#" class="btn secondary-btn">Hire me</a>
-                    </div>
-                </div>
-                
-                <div class="hero-photo-container">
-                    <div class="circle-bg"></div>
-                    <img src="images/DPimg.png" alt="Jenny" class="hero-photo">
-                </div>
-                
-                <div class="experience">
-                    <div class="stars">★★★★★</div>
-                    <div class="years">10 Years</div>
-                    <div class="years-text">Experince</div>
-                </div>
-                
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M20 80C50 60 80 80 80 20' stroke='%23FF8A50' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" alt="" class="deco-element">
+    <!-- Navigation -->
+    <nav>
+        <a href="#home" class="nav-links">
+            <div class="active">Home</div>
+        </a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Service</a>
+        </div>
+        <div class="logo">
+            <div class="logo-circle">JC</div>
+            JCREA
+        </div>
+        <div class="nav-links">
+            <a href="#resume">Resume</a>
+            <a href="#projects">Project</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hello-bubble">Hello!</div>
+            <h1>I'm <span>Jenny</span>,<br>Product Designer</h1>
+            <div class="testimonial">
+                <p>Jenny's Exceptional product design ensure our website's success. Highly Recommended</p>
             </div>
-        </section>
-    </main>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">Portfolio →</a>
+                <a href="#contact" class="btn btn-secondary">Hire me</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="circle-bg"></div>
+            <img src="/api/placeholder/500/750" alt="Jenny - Product Designer" class="person-img">
+            <div class="experience">
+                <div class="stars">★★★★★</div>
+                <div class="years">10 Years</div>
+                <p>Experience</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>With over 10 years of experience as a Product Designer, I specialize in creating intuitive and visually appealing digital experiences that solve real user problems. My approach combines user-centered design principles with strategic business thinking to deliver products that not only look great but also drive results.</p>
+                <p>Throughout my career, I've collaborated with startups, agencies, and enterprise companies across various industries including e-commerce, healthcare, fintech, and SaaS. This diverse background has equipped me with the versatility to adapt to different project requirements and business needs.</p>
+                <p>I believe that great design is not just about aesthetics, but about creating meaningful solutions that enhance people's lives. This philosophy guides my design process from research and ideation to implementation.</p>
+            </div>
+            <div class="skills">
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>UI/UX Design</span>
+                        <span>98%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 98%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Product Strategy</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>User Research</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Design Systems</span>
+                        <span>92%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Prototyping</span>
+                        <span>94%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 94%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>UI/UX Design</h3>
+                <p>Creating intuitive interfaces and seamless user experiences that delight users and meet business goals. From wireframes to high-fidelity prototypes, I ensure every interaction is meaningful.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>User Research</h3>
+                <p>Conducting comprehensive user research to understand needs, behaviors, and pain points. I turn insights into actionable design decisions that create products users love.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Product Strategy</h3>
+                <p>Developing strategic roadmaps and feature prioritization to ensure your product meets market demands and business objectives while solving real user problems.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Design Systems</h3>
+                <p>Building scalable design systems that ensure consistency, streamline the design process, and facilitate collaboration between design and development teams.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Design Workshops</h3>
+                <p>Facilitating collaborative design thinking workshops to generate innovative ideas, align team vision, and solve complex design challenges efficiently.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Design Implementation</h3>
+                <p>Working closely with development teams to ensure design integrity throughout implementation, providing guidance and support during the build process.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-filters">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Web Design</button>
+            <button class="filter-btn">Mobile Apps</button>
+            <button class="filter-btn">Design Systems</button>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="/api/placeholder/400/300" alt="E-commerce Redesign">
+                <div class="project-overlay">
+                    <h3>E-commerce Platform Redesign</h3>
+                    <p>UI/UX, Web Design</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="/api/placeholder/400/300" alt="Banking App">
+                <div class="project-overlay">
+                    <h3>Mobile Banking Application</h3>
+                    <p>App Design, Fintech</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="/api/placeholder/400/300" alt="Healthcare Dashboard">
+                <div class="project-overlay">
+                    <h3>Healthcare Analytics Dashboard</h3>
+                    <p>UI/UX, Data Visualization</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="/api/placeholder/400/300" alt="Design System">
+                <div class="project-overlay">
+                    <h3>Enterprise Design System</h3>
+                    <p>Design Systems, Documentation</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="/api/placeholder/400/300" alt="Travel App">
+                <div class="project-overlay">
+                    <h3>Travel Booking App</h3>
+                    <p>Mobile Design, UX Research</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="/api/placeholder/400/300" alt="SaaS Platform">
+                <div class="project-overlay">
+                    <h3>SaaS Product Platform</h3>
+                    <p>Product Design, Web App</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Resume/Experience Section -->
+    <section class="about" id="resume" style="background-color: #f1f1f1; color: #222;">
+        <h2 class="section-title">Experience & Education</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.8rem;">Work Experience</h3>
+                
+                <div style="margin-bottom: 2.5rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <h4 style="font-size: 1.3rem;">Senior Product Designer</h4>
+                        <span>2020 - Present</span>
+                    </div>
+                    <h5 style="color: #FF7E33; margin-bottom: 1rem;">TechCorp Inc.</h5>
+                    <p>Led the design team in creating a comprehensive design system that reduced inconsistencies by 80%. Redesigned the flagship product resulting in a 35% increase in user engagement and a 25% decrease in customer support tickets.</p>
+                </div>
+                
+                <div style="margin-bottom: 2.5rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <h4 style="font-size: 1.3rem;">UX/UI Designer</h4>
+                        <span>2017 - 2020</span>
+                    </div>
+                    <h5 style="color: #FF7E33; margin-bottom: 1rem;">InnovateLab</h5>
+                    <p>Collaborated with cross-functional teams to design and launch 12+ digital products. Conducted user research and testing, leading to a 40% improvement in task completion rates across products.</p>
+                </div>
+                
+                <div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <h4 style="font-size: 1.3rem;">Junior Designer</h4>
+                        <span>2015 - 2017</span>
+                    </div>
+                    <h5 style="color: #FF7E33; margin-bottom: 1rem;">CreativeAgency</h5>
+                    <p>Assisted in the design of websites and mobile applications for clients across various industries. Helped implement user-centered design principles into the agency's workflow.</p>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.8rem;">Education & Certifications</h3>
+                
+                <div style="margin-bottom: 2.5rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <h4 style="font-size: 1.3rem;">Master of Design</h4>
+                        <span>2013 - 2015</span>
+                    </div>
+                    <h5 style="color: #FF7E33; margin-bottom: 1rem;">Design Institute</h5>
+                    <p>Specialized in Interaction Design with focus on emerging technologies. Graduated with honors.</p>
+                </div>
+                
+                <div style="margin-bottom: 2.5rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <h4 style="font-size: 1.3rem;">Bachelor of Fine Arts</h4>
+                        <span>2009 - 2013</span>
+                    </div>
+                    <h5 style="color: #FF7E33; margin-bottom: 1rem;">State University</h5>
+                    <p>Major in Graphic Design with minor in Computer Science. Dean's List all semesters.</p>
+                </div>
+                
+                <div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 1rem;">Certifications</h4>
+                    <ul style="list-style-position: inside; line-height: 1.8;">
+                        <li>Advanced User Experience (UX) Certification</li>
+                        <li>Professional Product Management</li>
+                        <li>Design Leadership & Management</li>
+                        <li>Accessibility in Design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="testimonials-wrapper">
+            <div class="testimonial-card">
+                <p>"Working with Jenny was transformative for our product. Her exceptional design skills and strategic approach not only improved our UI but fundamentally enhanced the user experience. Our customer satisfaction scores increased by 45% after implementation."</p>
+                <div class="client">
+                    <img src="/api/placeholder/100/100" alt="Client" class="client-img">
+                    <div class="client-info">
+                        <h4>Michael Johnson</h4>
+                        <span>CEO, TechStart Inc.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>San Francisco, CA</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>jenny@designportfolio.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+                <h3>Follow Me</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">Dr</a>
+                    <a href="#" class="social-link">Be</a>
+                    <a href="#" class="social-link">Ig</a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <div class="logo" style="justify-content: center;">
+                <div class="logo-circle">JC</div>
+                JCREA
+            </div>
+        </div>
+        <p>Creating exceptional digital experiences through thoughtful design</p>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2025 Jenny's Portfolio. All rights reserved.</p>
+    </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Simple JavaScript for the filter buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Here you would normally filter the projects
+                    // For demonstration purposes, we're just toggling the active state
+                });
+            });
+        });
+    </script>
 </body>
 </html>
